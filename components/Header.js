@@ -19,7 +19,12 @@ export default function Header() {
           <Link href="/leaderboards" className="text-white hover:text-[#8B5CF6] font-medium">
             Leaderboards
           </Link>
-          <Link href="" className="text-[#6B7280] hover:text-white font-medium">
+          <Link 
+            href="http://docs.potionleaderboard.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-[#6B7280] hover:text-white font-medium"
+          >
             Learn
           </Link>
           <Link href="/prizes" className="text-[#6B7280] hover:text-white font-medium">
