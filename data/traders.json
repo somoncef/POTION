@@ -1,0 +1,109 @@
+{
+  "traders": [
+    {
+      "id": 1,
+      "rank": 1,
+      "name": "Orangie",
+      "wallet": "4cnLF1QBPAfvmb9CD1N1TKqifRKQbQ2DMaFHTNF8J4oH",
+      "avatar": "/profile.png",
+      "twitter": "@orangie",
+      "followers": "279K",
+      "tokens": 104,
+      "winRate": "74%",
+      "trades": {
+        "wins": 201,
+        "total": 321
+      },
+      "avgBuy": {
+        "sol": 10.2,
+        "usd": 2346
+      },
+      "avgEntry": "212K",
+      "avgHold": "32 m",
+      "realizedPNL": {
+        "sol": 101.2,
+        "usd": 23276,
+        "isPositive": true
+      }
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "name": "Orangie",
+      "wallet": "4cnLF1QBPAfvmb9CD1N1TKqifRKQbQ2DMaFHTNF8J4oH",
+      "avatar": "/profile.png",
+      "twitter": "@orangie",
+      "followers": "279K",
+      "tokens": 104,
+      "winRate": "74%",
+      "trades": {
+        "wins": 201,
+        "total": 321
+      },
+      "avgBuy": {
+        "sol": 10.2,
+        "usd": 2346
+      },
+      "avgEntry": "212K",
+      "avgHold": "32 m",
+      "realizedPNL": {
+        "sol": 101.2,
+        "usd": 23276,
+        "isPositive": true
+      }
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "name": "Orangie",
+      "wallet": "4cnLF1QBPAfvmb9CD1N1TKqifRKQbQ2DMaFHTNF8J4oH",
+      "avatar": "/profile.png",
+      "twitter": "@orangie",
+      "followers": "279K",
+      "tokens": 104,
+      "winRate": "74%",
+      "trades": {
+        "wins": 201,
+        "total": 321
+      },
+      "avgBuy": {
+        "sol": 10.2,
+        "usd": 2346
+      },
+      "avgEntry": "212K",
+      "avgHold": "32 m",
+      "realizedPNL": {
+        "sol": 101.2,
+        "usd": 23276,
+        "isPositive": true
+      }
+    },
+    {
+      "id": 4,
+      "rank": 4,
+      "name": "RandomGuy420",
+      "wallet": "4cnLF1QBPAfvmb9CD1N1TKqifRKQbQ2DMaFHTNF8J4oH",
+      "avatar": "",
+      "twitter": "-",
+      "followers": "-",
+      "tokens": 12,
+      "winRate": "12%",
+      "trades": {
+        "wins": 12,
+        "total": 12
+      },
+      "avgBuy": {
+        "sol": 0.01,
+        "usd": 2.32
+      },
+      "avgEntry": "1.4M",
+      "avgHold": "5 h",
+      "realizedPNL": {
+        "sol": -1.02,
+        "usd": 237.06,
+        "isPositive": false
+      }
+    }
+  ]
+}
+
