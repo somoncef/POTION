@@ -1,18 +1,91 @@
 "use client"
-
 import { useState } from "react"
 import Image from "next/image"
-import { ChevronDown, Share2, Search, SlidersHorizontal } from "lucide-react"
+import { ChevronDown, Share2, Search,SlidersVertical } from "lucide-react"
 import tradersData from "../data/traders.json"
+import { useRouter } from "next/navigation"
+
 
 export default function LeaderboardTable() {
+  const router = useRouter()
   const [timeFrame, setTimeFrame] = useState("Daily")
   const [searchQuery, setSearchQuery] = useState("")
+  const [sortConfig, setSortConfig] = useState({
+    key: 'rank',
+    direction: 'asc'
+  })
+  const handleTraderClick = (traderId) => {
+    router.push(`/profile/${traderId}`)
+  }
+  const handleSort = (key) => {
+    setSortConfig((currentSort) => ({
+      key,
+      direction: 
+        currentSort.key === key && currentSort.direction === 'asc' 
+          ? 'desc' 
+          : 'asc',
+    }))
+  }
+
+  const sortedTraders = [...tradersData.traders].sort((a, b) => {
+    switch (sortConfig.key) {
+      case 'rank':
+        return sortConfig.direction === 'asc' ? a.rank - b.rank : b.rank - a.rank;
+      
+      case 'followers':
+        return sortConfig.direction === 'asc' 
+          ? a.followers - b.followers 
+          : b.followers - a.followers;
+      
+      case 'tokens':
+        return sortConfig.direction === 'asc' 
+          ? a.tokens - b.tokens 
+          : b.tokens - a.tokens;
+      
+      case 'winRate':
+        const aWinRate = parseFloat(a.winRate.replace('%', ''));
+        const bWinRate = parseFloat(b.winRate.replace('%', ''));
+        return sortConfig.direction === 'asc' 
+          ? aWinRate - bWinRate 
+          : bWinRate - aWinRate;
+      
+      case 'trades':
+        return sortConfig.direction === 'asc' 
+          ? a.trades.total - b.trades.total 
+          : b.trades.total - a.trades.total;
+      
+      case 'avgBuy':
+        return sortConfig.direction === 'asc' 
+          ? parseFloat(a.avgBuy.sol) - parseFloat(b.avgBuy.sol)
+          : parseFloat(b.avgBuy.sol) - parseFloat(a.avgBuy.sol);
+      
+      case 'avgEntry':
+        return sortConfig.direction === 'asc' 
+          ? parseFloat(a.avgEntry) - parseFloat(b.avgEntry)
+          : parseFloat(b.avgEntry) - parseFloat(a.avgEntry);
+      
+      case 'avgHold':
+        // Assuming avgHold is in a format that can be compared directly
+        return sortConfig.direction === 'asc' 
+          ? a.avgHold.localeCompare(b.avgHold)
+          : b.avgHold.localeCompare(a.avgHold);
+      
+      case 'realizedPNL':
+        const aPNL = parseFloat(a.realizedPNL.sol) * (a.realizedPNL.isPositive ? 1 : -1);
+        const bPNL = parseFloat(b.realizedPNL.sol) * (b.realizedPNL.isPositive ? 1 : -1);
+        return sortConfig.direction === 'asc' 
+          ? aPNL - bPNL 
+          : bPNL - aPNL;
+      
+      default:
+        return 0;
+    }
+  })
 
   const getRankStyle = (rank) => {
-    if (rank === 1) return "bg-[#FFD700]"
-    if (rank === 2) return "bg-[#C0C0C0]"
-    if (rank === 3) return "bg-[#CD7F32]"
+    if (rank === 1) return "bg-[#CCAD59] text-black"
+    if (rank === 2) return "bg-[#BFBFBF] text-black"
+    if (rank === 3) return "bg-[#B2835F] text-black"
     return ""
   }
 
@@ -24,15 +97,15 @@ export default function LeaderboardTable() {
     <div className="w-full px-6 py-4">
       <div className="flex items-center justify-between mb-6">
         <div className="flex space-x-2">
-          <button className="px-5 py-2 bg-[#1E1B2C] text-white rounded-3xl border-[#464558]">Traders</button>
+          <button className="px-5 py-2 bg-[#25223D] text-white rounded-3xl border border-[#464558]">Traders</button>
           <button className="px-5 py-2 text-[#6B7280] font-medium  rounded-3xl">Groups</button>
         </div>
         <div className="flex items-center space-x-2">
           {["Daily", "Weekly", "Monthly", "All-Time"].map((period) => (
             <button
               key={period}
-              className={`px-5 py-2 font-medium rounded-3xl border-[#464558] ${
-                timeFrame === period ? "bg-[#1E1B2C] text-white" : "text-[#6B7280]"
+              className={`px-5 py-2 font-medium rounded-3xl  ${
+                timeFrame === period ? "bg-[#25223D] text-white border border-[#464558]" : "text-[#6B7280]"
               }`}
               onClick={() => setTimeFrame(period)}
             >
@@ -46,14 +119,14 @@ export default function LeaderboardTable() {
             <input
               type="text"
               placeholder="Search by name or wallet"
-              className="w-[320px] pl-10 pr-4 py-2 bg-[#1E1B2C] text-white rounded-lg border border-[#2E2A3D] focus:outline-none focus:border-[#8B5CF6]"
+              className="w-[320px] pl-10 pr-4 py-2 bg-[#060611] text-white rounded-full border border-[#464558] focus:outline-none focus:border-[#8B5CF6]"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          <button className="p-2 bg-[#1E1B2C] rounded-lg text-[#6B7280] hover:text-white relative">
-            <SlidersHorizontal size={20} />
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#8B5CF6] rounded-full text-[10px] flex items-center justify-center text-white">
+          <button className="px-4 py-2 bg-[#25223D] rounded-full text-[#6B7280] border-[#464558] border hover:text-white relative ">
+            <SlidersVertical size={20} />
+            <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#8B5CF6] rounded-full text-[10px] flex items-center justify-center text-white">
               2
             </span>
           </button>
@@ -64,62 +137,175 @@ export default function LeaderboardTable() {
         <table className="w-full">
           <thead>
             <tr className="text-left bg-[#1E1B2C] rounded-lg">
-              <th className="py-3 px-4 text-sm font-medium text-[#6B7280]">Rank</th>
-              <th className="py-3 px-4 text-sm font-medium text-[#6B7280]">Trader</th>
-              <th className="py-3 px-4 text-sm font-medium text-[#6B7280]">
-                <div className="flex items-center space-x-1 cursor-pointer">
+              <th 
+                className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                onClick={() => handleSort('rank')}
+              >
+                <div className="flex items-center space-x-1">
+                  <span>Rank</span>
+                  <ChevronDown 
+                    size={16} 
+                    className={`transform ${
+                      sortConfig.key === 'rank' 
+                        ? sortConfig.direction === 'desc' 
+                          ? 'rotate-180' 
+                          : 'rotate-0'
+                        : ''
+                    }`}
+                  />
+                </div>
+              </th>
+              <th className="py-3 px-4 text-sm font-medium text-white">Trader</th>
+              <th 
+                className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                onClick={() => handleSort('followers')}
+              >
+                <div className="flex items-center space-x-1">
                   <span>Followers</span>
-                  <ChevronDown size={16} />
+                  <ChevronDown 
+                    size={16} 
+                    className={`transform ${
+                      sortConfig.key === 'followers' 
+                        ? sortConfig.direction === 'desc' 
+                          ? 'rotate-180' 
+                          : 'rotate-0'
+                        : ''
+                    }`}
+                  />
                 </div>
               </th>
-              <th className="py-3 px-4 text-sm font-medium text-[#6B7280]">
-                <div className="flex items-center space-x-1 cursor-pointer">
+              <th 
+                className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                onClick={() => handleSort('tokens')}
+              >
+                <div className="flex items-center space-x-1">
                   <span>Tokens</span>
-                  <ChevronDown size={16} />
+                  <ChevronDown 
+                    size={16}
+                    className={`transform ${
+                      sortConfig.key === 'tokens' 
+                        ? sortConfig.direction === 'desc' 
+                          ? 'rotate-180' 
+                          : 'rotate-0'
+                        : ''
+                    }`}
+                  />
                 </div>
               </th>
-              <th className="py-3 px-4 text-sm font-medium text-[#6B7280]">
-                <div className="flex items-center space-x-1 cursor-pointer">
+              <th 
+                className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                onClick={() => handleSort('winRate')}
+              >
+                <div className="flex items-center space-x-1">
                   <span>Win Rate</span>
-                  <ChevronDown size={16} />
+                  <ChevronDown 
+                    size={16}
+                    className={`transform ${
+                      sortConfig.key === 'winRate' 
+                        ? sortConfig.direction === 'desc' 
+                          ? 'rotate-180' 
+                          : 'rotate-0'
+                        : ''
+                    }`}
+                  />
                 </div>
               </th>
-              <th className="py-3 px-4 text-sm font-medium text-[#6B7280]">
-                <div className="flex items-center space-x-1 cursor-pointer">
+              <th 
+                className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                onClick={() => handleSort('trades')}
+              >
+                <div className="flex items-center space-x-1">
                   <span>Trades</span>
-                  <ChevronDown size={16} />
+                  <ChevronDown 
+                    size={16}
+                    className={`transform ${
+                      sortConfig.key === 'trades' 
+                        ? sortConfig.direction === 'desc' 
+                          ? 'rotate-180' 
+                          : 'rotate-0'
+                        : ''
+                    }`}
+                  />
                 </div>
               </th>
-              <th className="py-3 px-4 text-sm font-medium text-[#6B7280]">
-                <div className="flex items-center space-x-1 cursor-pointer">
+              <th 
+                className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                onClick={() => handleSort('avgBuy')}
+              >
+                <div className="flex items-center space-x-1">
                   <span>Avg Buy</span>
-                  <ChevronDown size={16} />
+                  <ChevronDown 
+                    size={16}
+                    className={`transform ${
+                      sortConfig.key === 'avgBuy' 
+                        ? sortConfig.direction === 'desc' 
+                          ? 'rotate-180' 
+                          : 'rotate-0'
+                        : ''
+                    }`}
+                  />
                 </div>
               </th>
-              <th className="py-3 px-4 text-sm font-medium text-[#6B7280]">
-                <div className="flex items-center space-x-1 cursor-pointer">
+              <th 
+                className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                onClick={() => handleSort('avgEntry')}
+              >
+                <div className="flex items-center space-x-1">
                   <span>Avg Entry</span>
-                  <ChevronDown size={16} />
+                  <ChevronDown 
+                    size={16}
+                    className={`transform ${
+                      sortConfig.key === 'avgEntry' 
+                        ? sortConfig.direction === 'desc' 
+                          ? 'rotate-180' 
+                          : 'rotate-0'
+                        : ''
+                    }`}
+                  />
                 </div>
               </th>
-              <th className="py-3 px-4 text-sm font-medium text-[#6B7280]">
-                <div className="flex items-center space-x-1 cursor-pointer">
+              <th 
+                className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                onClick={() => handleSort('avgHold')}
+              >
+                <div className="flex items-center space-x-1">
                   <span>Avg Hold</span>
-                  <ChevronDown size={16} />
+                  <ChevronDown 
+                    size={16}
+                    className={`transform ${
+                      sortConfig.key === 'avgHold' 
+                        ? sortConfig.direction === 'desc' 
+                          ? 'rotate-180' 
+                          : 'rotate-0'
+                        : ''
+                    }`}
+                  />
                 </div>
               </th>
-              <th className="py-3 px-4 text-sm font-medium text-[#6B7280]">
-                <div className="flex items-center space-x-1 cursor-pointer">
+              <th 
+                className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                onClick={() => handleSort('realizedPNL')}
+              >
+                <div className="flex items-center space-x-1">
                   <span>Realized PNL</span>
-                  <ChevronDown size={16} />
+                  <ChevronDown 
+                    size={16}
+                    className={`transform ${
+                      sortConfig.key === 'realizedPNL' 
+                        ? sortConfig.direction === 'desc' 
+                          ? 'rotate-180' 
+                          : 'rotate-0'
+                        : ''
+                    }`}
+                  />
                 </div>
               </th>
-              <th className="py-3 px-4 text-sm font-medium text-[#6B7280]">Share</th>
+              <th className="py-3 px-4 text-sm font-medium text-white">Share</th>
             </tr>
           </thead>
           <tbody>
-            {tradersData.traders.map((trader) => (
-              <tr key={trader.id} className="border-b border-[#1E1B2C] hover:bg-[#1E1B2C]/50 cursor-pointer">
+            {sortedTraders.map((trader) => (
+              <tr key={trader.id} className="border-b border-[#1E1B2C] hover:bg-[#1E1B2C]/50 cursor-pointer" onClick={() => handleTraderClick(trader.id)}>
                 <td className="py-4 px-4">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center ${getRankStyle(trader.rank)}`}>
                     {trader.rank}
@@ -148,12 +334,12 @@ export default function LeaderboardTable() {
                 </td>
                 <td className="py-4 px-4 text-white">{trader.tokens}</td>
                 <td className="py-4 px-4">
-                  <span className={trader.winRate >= "50%" ? "text-[#22C55E]" : "text-[#EF4444]"}>
+                  <span className={trader.winRate >= "50%" ? "text-[#59CC6C]" : "text-[#CC5959]"}>
                     {trader.winRate}
                   </span>
                 </td>
                 <td className="py-4 px-4 text-white">
-                  <span className="text-[#22C55E]">{trader.trades.wins}</span>
+                  <span className="text-[#59CC6C]">{trader.trades.wins}</span>
                   <span className="text-[#6B7280]">/{trader.trades.total}</span>
                 </td>
                 <td className="py-4 px-4">
@@ -175,7 +361,7 @@ export default function LeaderboardTable() {
                 <td className="py-4 px-4">
                   <div className="flex items-center flex-col">
                     <div className="flex flex-row items-center space-x-2">
-                      <span className={trader.realizedPNL.isPositive ? "text-[#22C55E]" : "text-[#EF4444]"}>
+                      <span className={trader.realizedPNL.isPositive ? "text-[#59CC6C]" : "text-[#CC5959]"}>
                       {trader.realizedPNL.isPositive ? "+" : ""}
                       {trader.realizedPNL.sol}
                     </span>

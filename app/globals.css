@@ -64,3 +64,9 @@ body {
   background: #3e3a4d;
 }
 
+/* Add smooth transitions */
+a,
+button {
+  transition: all 0.2s ease-in-out;
+}
+

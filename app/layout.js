@@ -1,5 +1,6 @@
 import { Sora } from "next/font/google"
 import "./globals.css"
+import Header from "../components/Header"
 
 const sora = Sora({
   subsets: ["latin"],
@@ -9,7 +10,10 @@ const sora = Sora({
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${sora.variable} font-sans bg-[#0A0B0F] text-white min-h-screen`}>{children}</body>
+      <body className={`${sora.variable} font-sans bg-[#060611] text-white min-h-screen`}>
+        <Header />
+        <main className="">{children}</main>
+      </body>
     </html>
   )
 }

@@ -5,7 +5,7 @@ import { FaXTwitter ,FaDiscord  } from "react-icons/fa6";
 
 export default function Header() {
   return (
-    <header className="flex items-center justify-between px-6 py-4 border-b border-[#1E1B2C]">
+    <header className="bg-[#060611] flex items-center justify-between px-6 py-4">
       <div className="flex items-center space-x-12">
         <Link href="/" className="flex items-center space-x-2">
           <Image
