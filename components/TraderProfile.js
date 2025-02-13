@@ -108,7 +108,26 @@ export default function TraderProfile({ traderId }) {
                     <RefreshCcw size={16} />
                   </div>
                   <button className="text-[#AA00FF] hover:text-[#9F7AEA]">
-                  <svg fill="#AA00FF" width="30px" height="30px" viewBox="0 0 256 256" id="Flat" xmlns="http://www.w3.org/2000/svg" stroke="#AA00FF"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M229.65723,109.65723l-48,48A8.00066,8.00066,0,0,1,168,152V112a87.94718,87.94718,0,0,0-85.22852,65.99414,7.99961,7.99961,0,0,1-15.49414-3.98828A103.9414,103.9414,0,0,1,168,96V56a8.00066,8.00066,0,0,1,13.65723-5.65723l48,48A8.00122,8.00122,0,0,1,229.65723,109.65723ZM192,208H40V88a8,8,0,0,0-16,0V208a16.01833,16.01833,0,0,0,16,16H192a8,8,0,0,0,0-16Z"></path> </g></svg>
+                    <svg
+                      fill="#AA00FF"
+                      width="30px"
+                      height="30px"
+                      viewBox="0 0 256 256"
+                      id="Flat"
+                      xmlns="http://www.w3.org/2000/svg"
+                      stroke="#AA00FF"
+                    >
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        {" "}
+                        <path d="M229.65723,109.65723l-48,48A8.00066,8.00066,0,0,1,168,152V112a87.94718,87.94718,0,0,0-85.22852,65.99414,7.99961,7.99961,0,0,1-15.49414-3.98828A103.9414,103.9414,0,0,1,168,96V56a8.00066,8.00066,0,0,1,13.65723-5.65723l48,48A8.00122,8.00122,0,0,1,229.65723,109.65723ZM192,208H40V88a8,8,0,0,0-16,0V208a16.01833,16.01833,0,0,0,16,16H192a8,8,0,0,0,0-16Z"></path>{" "}
+                      </g>
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -120,21 +139,29 @@ export default function TraderProfile({ traderId }) {
                   <div className="border-b border-[#23242C]">
                     <div className="p-4 h-full flex justify-between items-center">
                       <span className="text-white text-sm">Tokens</span>
-                      <span className="text-white text-base">{trader.tokens}</span>
+                      <span className="text-white text-base">
+                        {trader.tokens}
+                      </span>
                     </div>
                   </div>
                   <div className="border-b border-[#23242C]">
                     <div className="p-4 h-full flex justify-between items-center">
                       <span className="text-white text-sm">Win Rate</span>
-                      <span className="text-[#59CC6C] text-base">{trader.winRate}</span>
+                      <span className="text-[#59CC6C] text-base">
+                        {trader.winRate}
+                      </span>
                     </div>
                   </div>
                   <div>
                     <div className="p-4 h-full flex justify-between items-center">
                       <span className="text-white text-sm">Trades</span>
                       <div>
-                        <span className="text-[#59CC6C] text-base">{trader.trades.wins}</span>
-                        <span className="text-[#6B7280] text-base">/{trader.trades.total}</span>
+                        <span className="text-[#59CC6C] text-base">
+                          {trader.trades.wins}
+                        </span>
+                        <span className="text-[#6B7280] text-base">
+                          /{trader.trades.total}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -145,26 +172,39 @@ export default function TraderProfile({ traderId }) {
                   <div className="border-b border-[#23242C]">
                     <div className="p-4 h-full flex justify-between items-center">
                       <span className="text-white text-sm">Average Buy</span>
-                        <div className="flex flex-col items-center">
-                            <div className="flex flex-row items-center space-x-2">
-                            <span className="text-white text-base">{trader.avgBuy.sol}</span>
-                            <Image src="/solana.png" alt="Solana" width={16} height={16} />
-                            </div>
-                        
-                        <span className="text-[#6B7280] text-base">${trader.avgBuy.usd}</span>
+                      <div className="flex flex-col items-center">
+                        <div className="flex flex-row items-center space-x-2">
+                          <span className="text-white text-base">
+                            {trader.avgBuy.sol}
+                          </span>
+                          <Image
+                            src="/solana.png"
+                            alt="Solana"
+                            width={16}
+                            height={16}
+                          />
+                        </div>
+
+                        <span className="text-[#6B7280] text-base">
+                          ${trader.avgBuy.usd}
+                        </span>
                       </div>
                     </div>
                   </div>
                   <div className="border-b border-[#23242C]">
                     <div className="p-4 h-full flex justify-between items-center">
                       <span className="text-white text-sm">Average Entry</span>
-                      <span className="text-white text-base">${trader.avgEntry}</span>
+                      <span className="text-white text-base">
+                        ${trader.avgEntry}
+                      </span>
                     </div>
                   </div>
                   <div>
                     <div className="p-4 h-full flex justify-between items-center">
                       <span className="text-white text-sm">Average Hold</span>
-                      <span className="text-white text-base">{trader.avgHold}</span>
+                      <span className="text-white text-base">
+                        {trader.avgHold}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -176,17 +216,28 @@ export default function TraderProfile({ traderId }) {
                       <span className="text-white text-sm">Total Invested</span>
                       <div className="flex flex-col items-center">
                         <div className="flex flex-row items-center space-x-2">
-                        <span className="text-white text-base">{trader.totalInvested.sol}</span>
-                        <Image src="/solana.png" alt="Solana" width={16} height={16} />
-                        </div> 
-                        <span className="text-[#6B7280] text-base">${trader.totalInvested.usd}</span>
+                          <span className="text-white text-base">
+                            {trader.totalInvested.sol}
+                          </span>
+                          <Image
+                            src="/solana.png"
+                            alt="Solana"
+                            width={16}
+                            height={16}
+                          />
+                        </div>
+                        <span className="text-[#6B7280] text-base">
+                          ${trader.totalInvested.usd}
+                        </span>
                       </div>
                     </div>
                   </div>
                   <div className="border-b border-[#23242C]">
                     <div className="p-4 h-full flex justify-between items-center">
                       <span className="text-white text-sm">ROI</span>
-                      <span className="text-[#59CC6C] text-base">{trader.roi.percentage}</span>
+                      <span className="text-[#59CC6C] text-base">
+                        {trader.roi.percentage}
+                      </span>
                     </div>
                   </div>
                   <div>
@@ -194,19 +245,29 @@ export default function TraderProfile({ traderId }) {
                       <span className="text-white text-sm">Realized PNL</span>
                       <div className="flex flex-col items-center">
                         <div className="flex flex-row items-center space-x-2">
-                          <span className="text-[#59CC6C] text-base">+{trader.realizedPNL.sol}</span>
-                        <Image src="/solana.png" alt="Solana" width={16} height={16} />
-                        </div> 
-                        <span className="text-[#6B7280] text-base">${trader.realizedPNL.usd}</span>
+                          <span className="text-[#59CC6C] text-base">
+                            +{trader.realizedPNL.sol}
+                          </span>
+                          <Image
+                            src="/solana.png"
+                            alt="Solana"
+                            width={16}
+                            height={16}
+                          />
+                        </div>
+                        <span className="text-[#6B7280] text-base">
+                          ${trader.realizedPNL.usd}
+                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Tabs and Search */}
-            <div className="flex justify-between items-center mb-6">
+          </div>
+        </div>
+                    {/* Tabs and Search */}
+                    <div className="flex justify-between items-center mb-6">
               <div className="flex space-x-2">
                 {["Trades", "Tokens", "Groups"].map((tab) => (
                   <button
@@ -304,7 +365,7 @@ export default function TraderProfile({ traderId }) {
                         key={trade.id}
                         className="border-b border-[#1E1B2C] hover:bg-[#1E1B2C]/50"
                       >
-                        <td className="py-4 px-4">
+                        <td className="py-4 px-4 text-end">
                           <div className="flex items-center space-x-3">
                             <Image
                               src="/profile.png"
@@ -321,9 +382,9 @@ export default function TraderProfile({ traderId }) {
                             </div>
                           </div>
                         </td>
-                        <td className="py-4 px-4">{trade.lastTrade}</td>
-                        <td className="py-4 px-4">{trade.mc}</td>
-                        <td className="py-4 px-4">
+                        <td className="py-4 px-4 text-end">{trade.lastTrade}</td>
+                        <td className="py-4 px-4 text-end">{trade.mc}</td>
+                        <td className="py-4 px-4 text-end">
                           <div className="flex flex-col items-center">
                            <div className="flex flex-row items-center space-x-2">
                             <span>{trade.invested.sol}</span>
@@ -339,7 +400,7 @@ export default function TraderProfile({ traderId }) {
                             </span>
                           </div>
                         </td>
-                        <td className="py-4 px-4">
+                        <td className="py-4 px-4 text-end">
                         <div className="flex flex-col items-center">
                         <div className="flex flex-row items-center space-x-2">
 
@@ -365,10 +426,10 @@ export default function TraderProfile({ traderId }) {
                           </div>
                           
                         </td>
-                        <td className="py-4 px-4 text-[#59CC6C]">
+                        <td className="py-4 px-4 text-end text-[#59CC6C]">
                           {trade.roi}
                         </td>
-                        <td className="py-4 px-4">
+                        <td className="py-4 px-4 text-end">
                           <span className="text-[#59CC6C]">
                             {trade.trades.wins}
                           </span>
@@ -376,7 +437,7 @@ export default function TraderProfile({ traderId }) {
                             /{trade.trades.total}
                           </span>
                         </td>
-                        <td className="py-4 px-4">
+                        <td className="py-4 px-4 text-end">
                         <div className="flex flex-col items-center">
                         <div className="flex flex-row items-center space-x-2"> 
                             <span>{trade.holding.sol}</span>
@@ -391,10 +452,10 @@ export default function TraderProfile({ traderId }) {
                             </span>
                           </div>
                         </td>
-                        <td className="py-4 px-4">${trade.avgBuy}</td>
-                        <td className="py-4 px-4">${trade.avgSell}</td>
-                        <td className="py-4 px-4">{trade.held}</td>
-                        <td className="py-4 px-4">
+                        <td className="py-4 px-4 text-end">${trade.avgBuy}</td>
+                        <td className="py-4 px-4 text-end">${trade.avgSell}</td>
+                        <td className="py-4 px-4 text-end">{trade.held}</td>
+                        <td className="py-4 px-4 text-end">
                           <button className="text-[#8B5CF6] hover:text-[#9F7AEA]">
                           <svg fill="#AA00FF" width="20px" height="20px" viewBox="0 0 256 256" id="Flat" xmlns="http://www.w3.org/2000/svg" stroke="#AA00FF"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M229.65723,109.65723l-48,48A8.00066,8.00066,0,0,1,168,152V112a87.94718,87.94718,0,0,0-85.22852,65.99414,7.99961,7.99961,0,0,1-15.49414-3.98828A103.9414,103.9414,0,0,1,168,96V56a8.00066,8.00066,0,0,1,13.65723-5.65723l48,48A8.00122,8.00122,0,0,1,229.65723,109.65723ZM192,208H40V88a8,8,0,0,0-16,0V208a16.01833,16.01833,0,0,0,16,16H192a8,8,0,0,0,0-16Z"></path> </g></svg>
                           </button>
@@ -404,8 +465,6 @@ export default function TraderProfile({ traderId }) {
                 </tbody>
               </table>
             </div>
-          </div>
-        </div>
       </div>
     </div>
   );
