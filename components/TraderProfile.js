@@ -365,7 +365,7 @@ export default function TraderProfile({ traderId }) {
                         key={trade.id}
                         className="border-b border-[#1E1B2C] hover:bg-[#1E1B2C]/50"
                       >
-                        <td className="py-4 px-4 text-end">
+                        <td className="py-4 px-4">
                           <div className="flex items-center space-x-3">
                             <Image
                               src="/profile.png"
