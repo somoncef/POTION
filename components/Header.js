@@ -27,9 +27,7 @@ export default function Header() {
     };
   }, [showDropdown]);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  
 
   return (
     <header className="bg-[#060611] flex items-center justify-between px-6 py-4">

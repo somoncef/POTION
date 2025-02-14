@@ -46,15 +46,12 @@ export default function TraderProfile({ traderId }) {
     return `${wallet.slice(0, 4)}...${wallet.slice(-4)}`;
   };
 
-  const formatTime = (minutes) => {
+  const formatTimeAgo = (minutes) => {
     if (minutes < 60) {
-        return `${minutes} min`;
+        return `${minutes} min ago`;
     } else {
         const hours = Math.floor(minutes / 60);
-        const remainingMinutes = minutes % 60;
-        return remainingMinutes > 0
-            ? `${hours} hour${hours > 1 ? 's' : ''} ${remainingMinutes} min`
-            : `${hours} hour${hours > 1 ? 's' : ''}`;
+        return `${hours} hour${hours > 1 ? 's' : ''} ago`;
     }
   };
 
@@ -171,18 +168,18 @@ export default function TraderProfile({ traderId }) {
 
             <div className="bg-[#11121B] ">
               <div className="flex justify-between items-center border-b border-[#23242C] p-4">
-                <span className="text-white">X Account</span>
+                <span className="text-white font-bold">X Account</span>
                 <div className="text-right">
                   <p className="text-white">{trader.twitter}</p>
                   <p className="text-sm text-[#6B7280]">
-                    {trader.followers} followers
+                    {formatNumber(trader.followers)} followers
                   </p>
                 </div>
               </div>
               <div className="flex justify-between items-center p-4">
-                <span className="text-white">Last Trade</span>
+                <span className="text-white font-bold">Last Trade</span>
                 <div className="flex items-center gap-2">
-                  <span>{trader.lastTrade.time}</span>
+                  <span>{formatTimeAgo(trader.lastTrade.time)}</span>
                   <span>
                     <Image src="/bull.png" alt="bull" width={16} height={16} />
                   </span>
@@ -247,7 +244,7 @@ export default function TraderProfile({ traderId }) {
                 <div className="bg-[#11121B] grid grid-rows-3  border-r max-md:border-b border-[#23242C]">
                   <div className="border-b border-[#23242C]">
                     <div className="p-4 h-full flex justify-between items-center">
-                      <span className="text-white text-sm">Tokens</span>
+                      <span className="text-white text-sm font-bold">Tokens</span>
                       <span className="text-white text-base">
                         {trader.tokens}
                       </span>
@@ -255,7 +252,7 @@ export default function TraderProfile({ traderId }) {
                   </div>
                   <div className="border-b border-[#23242C]">
                     <div className="p-4 h-full flex justify-between items-center">
-                      <span className="text-white text-sm">Win Rate</span>
+                      <span className="text-white text-sm font-bold">Win Rate</span>
                       <span className="text-[#59CC6C] text-base">
                         {trader.winRate}
                       </span>
@@ -263,7 +260,7 @@ export default function TraderProfile({ traderId }) {
                   </div>
                   <div>
                     <div className="p-4 h-full flex justify-between items-center">
-                      <span className="text-white text-sm">Trades</span>
+                      <span className="text-white text-sm font-bold">Trades</span>
                       <div>
                         <span className="text-[#59CC6C] text-base">
                           {trader.trades.wins}
@@ -280,7 +277,7 @@ export default function TraderProfile({ traderId }) {
                 <div className="bg-[#11121B] grid grid-rows-3 border-r max-md:border-b border-[#23242C]">
                   <div className="border-b border-[#23242C]">
                     <div className="p-4 h-full flex justify-between items-center">
-                      <span className="text-white text-sm">Average Buy</span>
+                      <span className="text-white text-sm font-bold">Average Buy</span>
                       <div className="flex flex-col items-center">
                         <div className="flex flex-row items-center space-x-2">
                           <span className="text-white text-base">
@@ -302,7 +299,7 @@ export default function TraderProfile({ traderId }) {
                   </div>
                   <div className="border-b border-[#23242C]">
                     <div className="p-4 h-full flex justify-between items-center">
-                      <span className="text-white text-sm">Average Entry</span>
+                      <span className="text-white text-sm font-bold">Average Entry</span>
                       <span className="text-white text-base">
                         ${trader.avgEntry}
                       </span>
@@ -310,7 +307,7 @@ export default function TraderProfile({ traderId }) {
                   </div>
                   <div>
                     <div className="p-4 h-full flex justify-between items-center">
-                      <span className="text-white text-sm">Average Hold</span>
+                      <span className="text-white text-sm font-bold">Average Hold</span>
                       <span className="text-white text-base">
                         {trader.avgHold}
                       </span>
@@ -322,7 +319,7 @@ export default function TraderProfile({ traderId }) {
                 <div className="bg-[#11121B] grid grid-rows-3">
                   <div className="border-b border-[#23242C]">
                     <div className="p-4 h-full flex justify-between items-center">
-                      <span className="text-white text-sm">Total Invested</span>
+                      <span className="text-white text-sm font-bold">Total Invested</span>
                       <div className="flex flex-col items-center">
                         <div className="flex flex-row items-center space-x-2">
                           <span className="text-white text-base">
@@ -343,7 +340,7 @@ export default function TraderProfile({ traderId }) {
                   </div>
                   <div className="border-b border-[#23242C]">
                     <div className="p-4 h-full flex justify-between items-center">
-                      <span className="text-white text-sm">ROI</span>
+                      <span className="text-white text-sm font-bold">ROI</span>
                       <span className="text-[#59CC6C] text-base">
                         {trader.roi.percentage}
                       </span>
@@ -351,7 +348,7 @@ export default function TraderProfile({ traderId }) {
                   </div>
                   <div>
                     <div className="p-4 h-full flex justify-between items-center">
-                      <span className="text-white text-sm">Realized PNL</span>
+                      <span className="text-white text-sm font-bold">Realized PNL</span>
                       <div className="flex flex-col items-center">
                         <div className="flex flex-row items-center space-x-2">
                           <span className="text-[#59CC6C] text-base">
@@ -417,11 +414,11 @@ export default function TraderProfile({ traderId }) {
               <table className="w-full">
                 <thead>
                   <tr className="text-left bg-[#1E1B2C] rounded-lg">
-                    <th className="py-3 px-4 text-sm font-medium text-white">
+                    <th className="py-3 px-4 text-sm font-bold text-white">
                       Token
                     </th>
                     <th
-                      className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                      className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                       onClick={() => handleSort("lastTrade")}
                     >
                       <div className="flex items-center space-x-1">
@@ -434,7 +431,7 @@ export default function TraderProfile({ traderId }) {
                       </div>
                     </th>
                     <th
-                      className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                      className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                       onClick={() => handleSort("mc")}
                     >
                       <div className="flex items-center space-x-1">
@@ -447,7 +444,7 @@ export default function TraderProfile({ traderId }) {
                       </div>
                     </th>
                     <th
-                      className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                      className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                       onClick={() => handleSort("invested")}
                     >
                       <div className="flex items-center space-x-1">
@@ -460,7 +457,7 @@ export default function TraderProfile({ traderId }) {
                       </div>
                     </th>
                     <th
-                      className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                      className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                       onClick={() => handleSort("realizedPNL")}
                     >
                       <div className="flex items-center space-x-1">
@@ -473,7 +470,7 @@ export default function TraderProfile({ traderId }) {
                       </div>
                     </th>
                     <th
-                      className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                      className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                       onClick={() => handleSort("roi")}
                     >
                       <div className="flex items-center space-x-1">
@@ -486,7 +483,7 @@ export default function TraderProfile({ traderId }) {
                       </div>
                     </th>
                     <th
-                      className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                      className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                       onClick={() => handleSort("trades")}
                     >
                       <div className="flex items-center space-x-1">
@@ -499,7 +496,7 @@ export default function TraderProfile({ traderId }) {
                       </div>
                     </th>
                     <th
-                      className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                      className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                       onClick={() => handleSort("holding")}
                     >
                       <div className="flex items-center space-x-1">
@@ -512,7 +509,7 @@ export default function TraderProfile({ traderId }) {
                       </div>
                     </th>
                     <th
-                      className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                      className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                       onClick={() => handleSort("avgBuy")}
                     >
                       <div className="flex items-center space-x-1">
@@ -525,7 +522,7 @@ export default function TraderProfile({ traderId }) {
                       </div>
                     </th>
                     <th
-                      className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                      className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                       onClick={() => handleSort("avgSell")}
                     >
                       <div className="flex items-center space-x-1">
@@ -538,7 +535,7 @@ export default function TraderProfile({ traderId }) {
                       </div>
                     </th>
                     <th
-                      className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                      className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                       onClick={() => handleSort("held")}
                     >
                       <div className="flex items-center space-x-1">
@@ -550,7 +547,7 @@ export default function TraderProfile({ traderId }) {
                         )}
                       </div>
                     </th>
-                    <th className="py-3 px-4 text-sm font-medium text-white">Share</th>
+                    <th className="py-3 px-4 text-sm font-bold text-white">Share</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -569,18 +566,18 @@ export default function TraderProfile({ traderId }) {
                             className="rounded-full"
                           />
                           <div>
-                            <div className="font-medium">{trade.name}</div>
+                            <div className="font-bold">{trade.name}</div>
                             <div className="text-sm text-[#6B7280]">
                               {formatWallet(trade.wallet)}
                             </div>
                           </div>
                         </div>
                       </td>
-                      <td className="py-4 px-4 text-end">{formatTime(trade.lastTrade)}</td>
-                      <td className="py-4 px-4 text-end">{formatNumber(trade.mc)}</td>
+                      <td className="py-4 px-4 text-end font-bold">{formatTimeAgo(trade.lastTrade)}</td>
+                      <td className="py-4 px-4 text-end font-bold">{formatNumber(trade.mc)}</td>
                       <td className="py-4 px-4 text-end">
                         <div className="flex flex-col items-center">
-                          <div className="flex flex-row items-center space-x-2">
+                          <div className="flex flex-row items-center space-x-2 font-bold">
                             <span>{trade.invested.sol}</span>
                             <Image
                               src="/solana.png"
@@ -589,16 +586,16 @@ export default function TraderProfile({ traderId }) {
                               height={16}
                             />
                           </div>
-                          <span className="text-[#6B7280]">${trade.invested.usd}</span>
+                          <span className="text-[#6B7280] ">${trade.invested.usd}</span>
                         </div>
                       </td>
                       <td className="py-4 px-4 text-end">
                         <div className="flex flex-col items-center">
-                          <div className="flex flex-row items-center space-x-2">
+                          <div className="flex flex-row items-center space-x-2 font-bold">
                             <span
                               className={
                                 trade.realizedPNL.isPositive
-                                  ? "text-[#59CC6C]"
+                                  ? "text-[#59CC6C] "
                                   : "text-[#EF4444]"
                               }
                             >
@@ -615,16 +612,16 @@ export default function TraderProfile({ traderId }) {
                           <span className="text-[#6B7280]">${trade.realizedPNL.usd}</span>
                         </div>
                       </td>
-                      <td className="py-4 px-4 text-end text-[#59CC6C]">
+                      <td className="py-4 px-4 text-end text-[#59CC6C] font-bold">
                         {trade.roi}
                       </td>
-                      <td className="py-4 px-4 text-end">
+                      <td className="py-4 px-4 text-end font-bold">
                         <span className="text-[#59CC6C]">{trade.trades.wins}</span>
                         <span className="text-[#6B7280]">/{trade.trades.total}</span>
                       </td>
                       <td className="py-4 px-4 text-end">
                         <div className="flex flex-col items-center">
-                          <div className="flex flex-row items-center space-x-2">
+                          <div className="flex flex-row items-center space-x-2 font-bold">
                             <span>{trade.holding.sol}</span>
                             <Image
                               src="/solana.png"
@@ -633,12 +630,12 @@ export default function TraderProfile({ traderId }) {
                               height={16}
                             />
                           </div>
-                          <span className="text-[#6B7280]">${trade.holding.usd}</span>
+                          <span className="text-[#6B7280] font-bold">${trade.holding.usd}</span>
                         </div>
                       </td>
-                      <td className="py-4 px-4 text-end">{formatNumber(trade.avgBuy)}</td>
-                      <td className="py-4 px-4 text-end">{formatNumber(trade.avgSell)}</td>
-                      <td className="py-4 px-4 text-end">{formatTime(trade.held)}</td>
+                      <td className="py-4 px-4 text-end font-bold">{formatNumber(trade.avgBuy)}</td>
+                      <td className="py-4 px-4 text-end font-bold">{formatNumber(trade.avgSell)}</td>
+                      <td className="py-4 px-4 text-end font-bold">{formatTimeAgo(trade.held)}</td>
                       <td className="py-4 px-4 text-end"><button className="text-[#8B5CF6] hover:text-[#9F7AEA]">
                       <svg
                         fill="#AA00FF"

@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Search, SlidersVertical, AlertCircle } from "lucide-react";
 import tradersData from "../data/traders.json";
 import { useRouter } from "next/navigation";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import axios from "axios";
 
 export default function LeaderboardTable() {
   const router = useRouter();
@@ -35,7 +36,7 @@ export default function LeaderboardTable() {
 
   const handleFilter = () => {
     if (handleProtectedAction()) {
-      // Your filter logic here
+      // Open filter modal
     }
   };
 
@@ -145,8 +146,7 @@ export default function LeaderboardTable() {
   const formatWallet = (wallet) => {
     return `${wallet.slice(0, 4)}...${wallet.slice(-4)}`;
   };
-
-  // Define the default and clicked SVGs
+ 
   const DefaultArrow = () => (
     <svg
       fill="#AA00FF"
@@ -171,6 +171,18 @@ export default function LeaderboardTable() {
       <path d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"></path>
     </svg>
   );
+
+  const fetchTradersData = async () => {
+    try {
+      const response = await axios.get("YOUR_API_ENDPOINT_HERE"); // Replace with your API endpoint
+     } catch (error) {
+      console.error("Error fetching traders data:", error); // Error handling
+     }
+  };
+
+  useEffect(() => {
+    fetchTradersData();
+  }, []);
 
   return (
     <div className="w-full px-6 py-4">
@@ -287,17 +299,17 @@ export default function LeaderboardTable() {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="text-left bg-[#25223D] rounded-lg">
-                <th className="py-3 px-4 text-sm font-medium text-white ">
+              <tr className="text-left bg-[#25223D] rounded-lg ">
+                <th className="py-3 px-4 text-sm font-bold text-white  ">
                   <div className="flex items-center space-x-1">
                     <span style={{ userSelect: 'none' }}>Rank</span>
                   </div>
                 </th>
-                <th className="py-3 px-4 text-sm font-medium text-white">
+                <th className="py-3 px-4 text-sm font-bold text-white">
                   Trader
                 </th>
                 <th
-                  className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                  className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                   onClick={() => handleSort("followers")}
                 >
                   <div className="flex items-center justify-center space-x-1">
@@ -311,7 +323,7 @@ export default function LeaderboardTable() {
                   </div>
                 </th>
                 <th
-                  className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                  className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                   onClick={() => handleSort("tokens")}
                 >
                   <div className="flex items-center space-x-1">
@@ -325,7 +337,7 @@ export default function LeaderboardTable() {
                   </div>
                 </th>
                 <th
-                  className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                  className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                   onClick={() => handleSort("winRate")}
                 >
                   <div className="flex items-center space-x-1">
@@ -339,7 +351,7 @@ export default function LeaderboardTable() {
                   </div>
                 </th>
                 <th
-                  className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                  className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                   onClick={() => handleSort("trades")}
                 >
                   <div className="flex items-center space-x-1">
@@ -353,7 +365,7 @@ export default function LeaderboardTable() {
                   </div>
                 </th>
                 <th
-                  className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                  className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                   onClick={() => handleSort("avgBuy")}
                 >
                   <div className="flex items-center space-x-1">
@@ -367,7 +379,7 @@ export default function LeaderboardTable() {
                   </div>
                 </th>
                 <th
-                  className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                  className="py-3 px-4 text-sm font-bold   text-white cursor-pointer"
                   onClick={() => handleSort("avgEntry")}
                 >
                   <div className="flex items-center space-x-1">
@@ -381,7 +393,7 @@ export default function LeaderboardTable() {
                   </div>
                 </th>
                 <th
-                  className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                  className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                   onClick={() => handleSort("avgHold")}
                 >
                   <div className="flex items-center space-x-1">
@@ -395,7 +407,7 @@ export default function LeaderboardTable() {
                   </div>
                 </th>
                 <th
-                  className="py-3 px-4 text-sm font-medium text-white cursor-pointer"
+                  className="py-3 px-4 text-sm font-bold text-white cursor-pointer"
                   onClick={() => handleSort("realizedPNL")}
                 >
                   <div className="flex items-center space-x-1">
@@ -408,7 +420,7 @@ export default function LeaderboardTable() {
                     )}
                   </div>
                 </th>
-                <th className="py-3 px-4 text-sm font-medium text-white">
+                <th className="py-3 px-4 text-sm font-bold text-white">
                   Share
                 </th>
               </tr>
@@ -449,17 +461,17 @@ export default function LeaderboardTable() {
                     </div>
                   </td>
                   <td className="py-4 px-4 text-end">
-                    <div className="flex flex-col items-end space-x-1">
-                      <span className="text-white">
+                    <div className="flex flex-col  items-end space-x-1">
+                      <span className="text-white font-bold">
                         {formatFollowers(trader.followers)}
                       </span>
                       <span className="text-[#6B7280]">{trader.twitter}</span>
                     </div>
                   </td>
-                  <td className="py-4 px-4 text-end text-white">
+                  <td className="py-4 px-4 text-end font-bold text-white">
                     {trader.tokens}
                   </td>
-                  <td className="py-4 px-4 text-end">
+                  <td className="py-4 px-4 text-end font-bold">
                     <span
                       className={
                         trader.winRate >= "50%"
@@ -470,7 +482,7 @@ export default function LeaderboardTable() {
                       {trader.winRate}
                     </span>
                   </td>
-                  <td className="py-4 px-4 text-end text-white">
+                  <td className="py-4 px-4 text-end text-white font-bold">
                     <span className="text-[#59CC6C]">{trader.trades.wins}</span>
                     <span className="text-[#6B7280]">
                       /{trader.trades.total}
@@ -479,7 +491,7 @@ export default function LeaderboardTable() {
                   <td className="py-4 px-4 text-end">
                     <div className="flex flex-col items-end justify-end">
                       <div className="flex flex-row items-center space-x-2">
-                        <span className="text-white">{trader.avgBuy.sol}</span>
+                        <span className="text-white font-bold">{trader.avgBuy.sol}</span>
                         <Image
                           src="/solana.png"
                           alt="Solana"
@@ -487,15 +499,15 @@ export default function LeaderboardTable() {
                           height={16}
                         />
                       </div>
-                      <span className="text-[#6B7280]">
+                      <span className="text-[#6B7280] ">
                         ${trader.avgBuy.usd}
                       </span>
                     </div>
                   </td>
-                  <td className="py-4 px-4 text-end text-white">
+                  <td className="py-4 px-4 text-end text-white font-bold">
                     ${trader.avgEntry}
                   </td>
-                  <td className="py-4 px-4 text-end text-white">
+                  <td className="py-4 px-4 text-end text-white font-bold">
                     {trader.avgHold}
                   </td>
                   <td className="py-4 px-4 text-end">
@@ -504,8 +516,8 @@ export default function LeaderboardTable() {
                         <span
                           className={
                             trader.realizedPNL.isPositive
-                              ? "text-[#59CC6C]"
-                              : "text-[#CC5959]"
+                              ? "text-[#59CC6C] font-bold"
+                              : "text-[#CC5959] font-bold"
                           }
                         >
                           {trader.realizedPNL.isPositive ? "+" : ""}
