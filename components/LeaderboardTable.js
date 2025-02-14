@@ -174,8 +174,8 @@ export default function LeaderboardTable() {
 
   return (
     <div className="w-full px-6 py-4">
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex space-x-2">
+      <div className="flex items-center max-md:flex-col max-md:gap-7 justify-between mb-6">
+        <div className="flex  space-x-2">
           <button
             className={`px-5 py-2 rounded-3xl ${
               activeTab === "traders"
@@ -534,11 +534,11 @@ export default function LeaderboardTable() {
                         xmlns="http://www.w3.org/2000/svg"
                         stroke="#AA00FF"
                       >
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                         <g
                           id="SVGRepo_tracerCarrier"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         ></g>
                         <g id="SVGRepo_iconCarrier">
                           {" "}

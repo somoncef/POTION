@@ -34,7 +34,7 @@
         "isPositive": true
       },
       "lastTrade": {
-        "time": "30 min ago",
+        "time": 30,
         "direction": "up"
       },
       "tokenTrades": [
@@ -42,46 +42,46 @@
           "id": 1,
           "name": "ORANGIE",
           "wallet": "6sdE9C4F8H2J5K7L9M3N6P8Q2R5T8V3X5Z7pump",
-          "lastTrade": "2 min",
-          "mc": "279K",
+          "lastTrade": 2,
+          "mc": 279000,
           "invested": { "sol": 10.2, "usd": 2346 },
           "realizedPNL": { "sol": 101.2, "usd": 23276, "isPositive": true },
-          "roi": "74%",
+          "roi": 74,
           "trades": { "wins": 2, "total": 8 },
           "holding": { "sol": 1.2, "usd": 246 },
-          "avgBuy": "69K",
-          "avgSell": "225K",
-          "held": "3 min"
+          "avgBuy": 69000,
+          "avgSell": 225000,
+          "held": 3
         },
         {
           "id": 2,
           "name": "PEPE",
           "wallet": "6sdE9C4F8H2J5K7L9M3N6P8Q2R5T8V3X5Z7meme",
-          "lastTrade": "15 min",
-          "mc": "156K",
+          "lastTrade": 15,
+          "mc": 156000,
           "invested": { "sol": 8.4, "usd": 1932 },
           "realizedPNL": { "sol": 42.5, "usd": 9775, "isPositive": true },
-          "roi": "65%",
+          "roi": 65,
           "trades": { "wins": 4, "total": 6 },
           "holding": { "sol": 0.8, "usd": 184 },
-          "avgBuy": "45K",
-          "avgSell": "180K",
-          "held": "5 min"
+          "avgBuy": 45000,
+          "avgSell": 180000,
+          "held": 5
         },
         {
           "id": 3,
           "name": "DOGE",
           "wallet": "6sdE9C4F8H2J5K7L9M3N6P8Q2R5T8V3X5Z7wow",
-          "lastTrade": "45 min",
-          "mc": "198K",
+          "lastTrade": 45,
+          "mc": 198000,
           "invested": { "sol": 12.6, "usd": 2898 },
           "realizedPNL": { "sol": -2.4, "usd": -552, "isPositive": false },
-          "roi": "42%",
+          "roi": 42,
           "trades": { "wins": 1, "total": 3 },
           "holding": { "sol": 0.5, "usd": 115 },
-          "avgBuy": "92K",
-          "avgSell": "78K",
-          "held": "8 min"
+          "avgBuy": 92000,
+          "avgSell": 78000,
+          "held": 8
         }
       ]
     },
@@ -119,7 +119,7 @@
         "isPositive": false
       },
       "lastTrade": {
-        "time": "2 h ago",
+        "time": 120,
         "direction": "down"
       },
       "tokenTrades": [
@@ -127,46 +127,46 @@
           "id": 1,
           "name": "RANDOM",
           "wallet": "7knLF7B2D4F6H8J0L2N4P6R8T0V2X4Z6Y8rand",
-          "lastTrade": "30 min",
-          "mc": "45K",
+          "lastTrade": 30,
+          "mc": 45000,
           "invested": { "sol": 0.5, "usd": 115 },
           "realizedPNL": { "sol": -0.2, "usd": -46, "isPositive": false },
-          "roi": "15%",
+          "roi": 15,
           "trades": { "wins": 1, "total": 4 },
           "holding": { "sol": 0.1, "usd": 23 },
-          "avgBuy": "25K",
-          "avgSell": "22K",
-          "held": "1 h"
+          "avgBuy": 25000,
+          "avgSell": 22000,
+          "held": 60
         },
         {
           "id": 2,
           "name": "LUCKY",
           "wallet": "7knLF7B2D4F6H8J0L2N4P6R8T0V2X4Z6Y8luck",
-          "lastTrade": "1 h",
-          "mc": "78K",
+          "lastTrade": 60,
+          "mc": 78000,
           "invested": { "sol": 0.8, "usd": 184 },
           "realizedPNL": { "sol": -0.3, "usd": -69, "isPositive": false },
-          "roi": "18%",
+          "roi": 18,
           "trades": { "wins": 2, "total": 5 },
           "holding": { "sol": 0.2, "usd": 46 },
-          "avgBuy": "35K",
-          "avgSell": "32K",
-          "held": "2 h"
+          "avgBuy": 35000,
+          "avgSell": 32000,
+          "held": 120
         },
         {
           "id": 3,
           "name": "MOON",
           "wallet": "7knLF7B2D4F6H8J0L2N4P6R8T0V2X4Z6Y8moon",
-          "lastTrade": "3 h",
-          "mc": "92K",
+          "lastTrade": 180,
+          "mc": 92000,
           "invested": { "sol": 0.6, "usd": 138 },
           "realizedPNL": { "sol": -0.4, "usd": -92, "isPositive": false },
-          "roi": "8%",
+          "roi": 8,
           "trades": { "wins": 1, "total": 3 },
           "holding": { "sol": 0.15, "usd": 34.5 },
-          "avgBuy": "48K",
-          "avgSell": "42K",
-          "held": "45 min"
+          "avgBuy": 48000,
+          "avgSell": 42000,
+          "held": 45
         }
       ]
     },
@@ -204,7 +204,7 @@
         "isPositive": true
       },
       "lastTrade": {
-        "time": "45 min ago",
+        "time": 45,
         "direction": "up"
       },
       "tokenTrades": [
@@ -212,46 +212,46 @@
           "id": 1,
           "name": "WHALE",
           "wallet": "8xnLF7C3E5G7I9K1M3O5Q7S9U1W3Y5A7B9pump",
-          "lastTrade": "45 min",
-          "mc": "542K",
+          "lastTrade": 45,
+          "mc": 542000,
           "invested": { "sol": 25.4, "usd": 5842 },
           "realizedPNL": { "sol": 892.5, "usd": 205275, "isPositive": true },
-          "roi": "82%",
+          "roi": 82,
           "trades": { "wins": 410, "total": 500 },
           "holding": { "sol": 5.4, "usd": 1242 },
-          "avgBuy": "156K",
-          "avgSell": "320K",
-          "held": "2 h"
+          "avgBuy": 156000,
+          "avgSell": 320000,
+          "held": 120
         },
         {
           "id": 2,
           "name": "SHARK",
           "wallet": "8xnLF7C3E5G7I9K1M3O5Q7S9U1W3Y5A7B9fish",
-          "lastTrade": "1.5 h",
-          "mc": "385K",
+          "lastTrade": 90,
+          "mc": 385000,
           "invested": { "sol": 18.6, "usd": 4278 },
           "realizedPNL": { "sol": 456.8, "usd": 105064, "isPositive": true },
-          "roi": "78%",
+          "roi": 78,
           "trades": { "wins": 285, "total": 350 },
           "holding": { "sol": 4.2, "usd": 966 },
-          "avgBuy": "142K",
-          "avgSell": "295K",
-          "held": "1.5 h"
+          "avgBuy": 142000,
+          "avgSell": 295000,
+          "held": 90
         },
         {
           "id": 3,
           "name": "DOLPHIN",
           "wallet": "8xnLF7C3E5G7I9K1M3O5Q7S9U1W3Y5A7B9swim",
-          "lastTrade": "2.5 h",
-          "mc": "298K",
+          "lastTrade": 150,
+          "mc": 298000,
           "invested": { "sol": 15.8, "usd": 3634 },
           "realizedPNL": { "sol": 234.6, "usd": 53958, "isPositive": true },
-          "roi": "75%",
+          "roi": 75,
           "trades": { "wins": 195, "total": 250 },
           "holding": { "sol": 3.8, "usd": 874 },
-          "avgBuy": "128K",
-          "avgSell": "275K",
-          "held": "1 h"
+          "avgBuy": 128000,
+          "avgSell": 275000,
+          "held": 60
         }
       ]
     },
@@ -289,7 +289,7 @@
         "isPositive": true
       },
       "lastTrade": {
-        "time": "15 min ago",
+        "time": 15,
         "direction": "up"
       },
       "tokenTrades": [
@@ -297,46 +297,46 @@
           "id": 1,
           "name": "DAYTRADE",
           "wallet": "9ynLF7D5G8H2K4M6P9R1T3V5X7Z9A2C4E6pro",
-          "lastTrade": "15 min",
-          "mc": "125K",
+          "lastTrade": 15,
+          "mc": 125000,
           "invested": { "sol": 5.6, "usd": 1288 },
           "realizedPNL": { "sol": 234.8, "usd": 54004, "isPositive": true },
-          "roi": "68%",
+          "roi": 68,
           "trades": { "wins": 890, "total": 1308 },
           "holding": { "sol": 2.1, "usd": 483 },
-          "avgBuy": "98K",
-          "avgSell": "165K",
-          "held": "15 m"
+          "avgBuy": 98000,
+          "avgSell": 165000,
+          "held": 15
         },
         {
           "id": 2,
           "name": "SCALP",
           "wallet": "9ynLF7D5G8H2K4M6P9R1T3V5X7Z9A2C4E6day",
-          "lastTrade": "25 min",
-          "mc": "98K",
+          "lastTrade": 25,
+          "mc": 98000,
           "invested": { "sol": 4.8, "usd": 1104 },
           "realizedPNL": { "sol": 156.4, "usd": 35972, "isPositive": true },
-          "roi": "65%",
+          "roi": 65,
           "trades": { "wins": 650, "total": 920 },
           "holding": { "sol": 1.8, "usd": 414 },
-          "avgBuy": "85K",
-          "avgSell": "145K",
-          "held": "12 m"
+          "avgBuy": 85000,
+          "avgSell": 145000,
+          "held": 12
         },
         {
           "id": 3,
           "name": "QUICK",
           "wallet": "9ynLF7D5G8H2K4M6P9R1T3V5X7Z9A2C4E6fast",
-          "lastTrade": "35 min",
-          "mc": "76K",
+          "lastTrade": 35,
+          "mc": 76000,
           "invested": { "sol": 3.9, "usd": 897 },
           "realizedPNL": { "sol": 98.6, "usd": 22678, "isPositive": true },
-          "roi": "62%",
+          "roi": 62,
           "trades": { "wins": 425, "total": 680 },
           "holding": { "sol": 1.5, "usd": 345 },
-          "avgBuy": "72K",
-          "avgSell": "128K",
-          "held": "10 m"
+          "avgBuy": 72000,
+          "avgSell": 128000,
+          "held": 10
         }
       ]
     }
