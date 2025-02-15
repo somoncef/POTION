@@ -38,6 +38,9 @@ This project is a web application built using React and Next.js, designed to dis
    - Test the sorting functionality by clicking on the column headers in the leaderboard table.
    - Check the filtering options to ensure they work as expected.
 
+## Live Testing
+You can test the live application at the following link: [Potion Leaderboard](https://potion-eta.vercel.app)
+
 ## Deployment Instructions
 ### Deploying to Vercel
 1. **Create a Vercel Account**:
