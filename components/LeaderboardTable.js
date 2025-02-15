@@ -10,7 +10,7 @@ import axios from "axios";
 
 export default function LeaderboardTable() {
   const router = useRouter();
-  const { connected, publicKey } = useWallet();
+  const { connected} = useWallet();
   const [timeFrame, setTimeFrame] = useState("Daily");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortConfig, setSortConfig] = useState({
@@ -19,6 +19,8 @@ export default function LeaderboardTable() {
   });
   const [activeTab, setActiveTab] = useState("traders");
   const [showConnectWalletModal, setShowConnectWalletModal] = useState(false);
+  const [filteredTraders, setFilteredTraders] = useState(tradersData.traders);
+  const [filterCount, setFilterCount] = useState(0);
 
   const handleProtectedAction = () => {
     if (!connected) {
@@ -29,8 +31,20 @@ export default function LeaderboardTable() {
   };
 
   const handleSearch = (e) => {
-    if (handleProtectedAction()) {
-      setSearchQuery(e.target.value);
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+    
+    const filteredTraders = tradersData.traders.filter(trader => 
+        trader.name.toLowerCase().includes(query) || 
+        trader.wallet.toLowerCase().includes(query)
+    );
+
+    setFilteredTraders(filteredTraders);
+    
+    if (query.length > 0) {
+        setFilterCount(1);
+    } else {
+        setFilterCount(0);
     }
   };
 
@@ -42,15 +56,16 @@ export default function LeaderboardTable() {
 
   const handleSort = (key) => {
     if (handleProtectedAction()) {
-      setSortConfig((currentSort) => {
-        if (currentSort.key === key) {
-          if (currentSort.direction !== null) {
-            return { key: "rank", direction: null };
-          }
-          return { key, direction: "asc" };
-        }
-        return { key, direction: "asc" };
-      });
+        setSortConfig((currentSort) => {
+            // Do not increment filterCount when sorting
+            if (currentSort.key === key) {
+                if (currentSort.direction !== null) {
+                    return { key: "rank", direction: null };
+                }
+                return { key, direction: "asc" };
+            }
+            return { key, direction: "asc" };
+        });
     }
   };
 
@@ -73,7 +88,7 @@ export default function LeaderboardTable() {
     return num.toString();
   };
 
-  const sortedTraders = [...tradersData.traders].sort((a, b) => {
+  const sortedTraders = [...filteredTraders].sort((a, b) => {
     if (sortConfig.direction === null) {
       return a.rank - b.rank;
     }
@@ -174,11 +189,14 @@ export default function LeaderboardTable() {
 
   const fetchTradersData = async () => {
     try {
-      const response = await axios.get("YOUR_API_ENDPOINT_HERE"); // Replace with your API endpoint
-     } catch (error) {
-      console.error("Error fetching traders data:", error); // Error handling
-     }
+      const response = await axios.get("YOUR_API_ENDPOINT"); 
+      console.log("Traders data:", response.data); // Use the response
+      return response.data; // Return data if needed
+    } catch (error) {
+      console.error("Error fetching traders data:", error);
+    }
   };
+  
 
   useEffect(() => {
     fetchTradersData();
@@ -246,9 +264,11 @@ export default function LeaderboardTable() {
                 onClick={handleFilter}
               >
                 <SlidersVertical size={20} />
-                <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#8B5CF6] rounded-full text-[10px] flex items-center justify-center text-white">
-                  2
-                </span>
+                {filterCount > 0 && (
+                  <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#8B5CF6] rounded-full text-[10px] flex items-center justify-center text-white">
+                    {filterCount}
+                  </span>
+                )}
               </button>
             </div>
           </>

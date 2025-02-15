@@ -5,10 +5,8 @@ import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl } from '@solana/web3.js';
 import { useMemo } from 'react';
-
-// Import the styles
-require('@solana/wallet-adapter-react-ui/styles.css');
-
+import "@solana/wallet-adapter-react-ui/styles.css";
+// Import the styles  
 export default function WalletContextProvider({ children }) {
   // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
   const network = WalletAdapterNetwork.Mainnet;

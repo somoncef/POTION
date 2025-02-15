@@ -18,6 +18,8 @@ export default function TraderProfile({ traderId }) {
     key: "lastTrade",
     direction: "asc",
   });
+  const [filterCount, setFilterCount] = useState(0);
+
   const DefaultArrow = () => (
     <svg
       fill="#AA00FF"
@@ -89,11 +91,29 @@ export default function TraderProfile({ traderId }) {
     });
   };
 
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    if (query.length > 0) {
+      setFilterCount(1);
+    } else {
+      setFilterCount(0);
+    }
+  };
+
   if (!trader) {
     return null;
   }
 
-  const sortedTokenTrades = [...trader.tokenTrades].sort((a, b) => {
+  const filteredTokenTrades = trader.tokenTrades.filter((trade) => {
+    return (
+      trade.name.toLowerCase().includes(searchQuery) ||
+      trade.wallet.toLowerCase().includes(searchQuery)
+    );
+  });
+
+  const sortedTokenTrades = [...filteredTokenTrades].sort((a, b) => {
     if (sortConfig.direction === null) {
       return 0; // No sorting
     }
@@ -397,13 +417,13 @@ export default function TraderProfile({ traderId }) {
               placeholder="Search by name or wallet"
               className="w-[320px] pl-10 pr-4 py-2 bg-[#060611] text-white rounded-full border border-[#464558] focus:outline-none focus:border-[#8B5CF6]"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={handleSearch}
             />
                 </div>
                 <button className="px-4 py-2 bg-[#25223D] rounded-full text-[#6B7280] border-[#464558] border hover:text-white relative ">
             <SlidersVertical size={20} />
             <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#8B5CF6] rounded-full text-[10px] flex items-center justify-center text-white">
-              2
+              {filterCount}
             </span>
           </button>
               </div>
