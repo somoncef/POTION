@@ -21,6 +21,7 @@ export default function LeaderboardTable() {
   const [showConnectWalletModal, setShowConnectWalletModal] = useState(false);
   const [filteredTraders, setFilteredTraders] = useState(tradersData.traders);
   const [filterCount, setFilterCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleProtectedAction = () => {
     if (!connected) {
@@ -199,7 +200,11 @@ export default function LeaderboardTable() {
   
 
   useEffect(() => {
-    fetchTradersData();
+    const fetchData = async () => {
+      await fetchTradersData();
+      setIsLoading(false);
+    };
+    fetchData();
   }, []);
 
   return (
@@ -279,7 +284,7 @@ export default function LeaderboardTable() {
 
       {/* Alerts Section */}
       <div className="mb-6 space-y-2">
-        {!connected && (
+        {!connected && !isLoading && (
           <div className="flex items-center justify-between p-4 bg-[#25223D] rounded-lg border border-[#464558]">
             <div className="flex items-center space-x-2">
               <AlertCircle size={20} className="text-[#8B5CF6]" />
