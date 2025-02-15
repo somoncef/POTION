@@ -8,6 +8,27 @@ const sora = Sora({
   variable: "--font-sora",
 })
 
+export const metadata = {
+  title: "POTION Dashboard", 
+  openGraph: {
+    title: "POTION Dashboard", 
+    images: [
+      {
+        url: "/logo.png",
+        width: 800,
+        height: 600,
+        alt: "POTION Dashboard Image",
+      },
+    ],
+  },
+  twitter: {
+    card: "POTION Dashboard",
+    title: "POTION Dashboard",
+    description: "POTION Dashboard",
+    image: "/logo.png",
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">

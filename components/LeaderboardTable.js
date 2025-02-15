@@ -469,7 +469,7 @@ export default function LeaderboardTable() {
                   <td className="py-4 px-4 ">
                     <div className="flex items-center space-x-3">
                       <Image
-                        src={trader.avatar || "/placeholder.png"}
+                        src={trader.avatar || "/Placeholder.png"}
                         alt={trader.name}
                         width={40}
                         height={40}
